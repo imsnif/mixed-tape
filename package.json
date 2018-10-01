@@ -1,0 +1,20 @@
+{
+  "name": "mix-tape",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.spec.js | tap-spec"
+  },
+  "author": "Aram Drevekenin <grimsniffer@gmail.com>",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "tap-parser": "^7.0.0"
+  },
+  "devDependencies": {
+    "proxyquire": "^2.1.0",
+    "sinon": "^6.3.4",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
