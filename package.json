@@ -7,7 +7,7 @@
     "lint": "standard --fix"
   },
   "author": "Aram Drevekenin <grimsniffer@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "dependencies": {},
   "devDependencies": {
