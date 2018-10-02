@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "standard && tape test/*.spec.js | tap-spec",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "coverage": "nyc --reporter=lcov npm test"
   },
   "author": "Aram Drevekenin <grimsniffer@gmail.com>",
   "license": "MIT",
   "description": "",
   "dependencies": {},
   "devDependencies": {
+    "nyc": "^13.0.1",
     "proxyquire": "^2.1.0",
     "sinon": "^6.3.4",
     "standard": "^12.0.1",
