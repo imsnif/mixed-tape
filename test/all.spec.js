@@ -275,7 +275,9 @@ test('respects onFinish', async t => {
     await testsDone
     t.ok(third.calledOnce, 'onFinish hook ran')
     t.ok(third.calledAfter(first), 'onFinish ran at the end (after first test)')
-    t.ok(third.calledAfter(second), 'onFinish ran at the end (after second test)')
+    t.ok(
+      third.calledAfter(second), 'onFinish ran at the end (after second test)'
+    )
   } catch (e) {
     t.fail(e.message)
     t.end()
@@ -309,7 +311,9 @@ test('respects onFinish with failed test', async t => {
     await testsDone
     t.ok(third.calledOnce, 'onFinish hook ran')
     t.ok(third.calledAfter(first), 'onFinish ran at the end (after first test)')
-    t.ok(third.calledAfter(second), 'onFinish ran at the end (after second test)')
+    t.ok(
+      third.calledAfter(second), 'onFinish ran at the end (after second test)'
+    )
   } catch (e) {
     t.fail(e.message)
     t.end()
@@ -342,8 +346,12 @@ test('respects onFailure', async t => {
     })
     await testsDone
     t.ok(third.calledOnce, 'onFailure hook ran')
-    t.ok(third.calledAfter(first), 'onFailure ran at the end (after first test)')
-    t.ok(third.calledAfter(second), 'onFailure ran at the end (after second test)')
+    t.ok(
+      third.calledAfter(first), 'onFailure ran at the end (after first test)'
+    )
+    t.ok(
+      third.calledAfter(second), 'onFailure ran at the end (after second test)'
+    )
   } catch (e) {
     t.fail(e.message)
     t.end()
