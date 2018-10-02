@@ -144,7 +144,7 @@ test('tests provide proper TAP output on failure', async t => {
       'ok 2 one one one\n',
       '\n1..2\n',
       '# tests 2\n',
-      '# pass 2\n',
+      '# pass 1\n',
       '# fail 1\n'
     ]
     output.on('data', function(data) {
