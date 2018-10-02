@@ -91,7 +91,7 @@ test('tests provide proper TAP output on success', async t => {
       '# pass 2\n',
       '\n# ok\n'
     ]
-    output.on('data', function(data) {
+    output.on('data', function (data) {
       this.index = this.index || 0
       t.equals(
         data.toString(),
@@ -134,17 +134,17 @@ test('tests provide proper TAP output on failure', async t => {
       'not ok 1 two two two\n',
       '  ---\n',
       '    operator: fail\n',
-      /^    at:/,
+      /^ {4}at:/,
       '    stack: |-\n',
       '      Error: two two two\n',
-      /^          at/, // TODO: find a better solution
-      /^          at/,
-      /^          at/,
-      /^          at/,
-      /^          at/,
-      /^          at/,
-      /^          at/,
-      /^          at/,
+      /^ {10}at/, // TODO: find a better solution
+      /^ {10}at/,
+      /^ {10}at/,
+      /^ {10}at/,
+      /^ {10}at/,
+      /^ {10}at/,
+      /^ {10}at/,
+      /^ {10}at/,
       '  ...\n',
       '# first test\n',
       'ok 2 one one one\n',
@@ -153,7 +153,7 @@ test('tests provide proper TAP output on failure', async t => {
       '# pass 1\n',
       '# fail 1\n'
     ]
-    output.on('data', function(data) {
+    output.on('data', function (data) {
       this.index = this.index || 0
       if (expected[this.index] instanceof RegExp) {
         t.ok(
@@ -386,7 +386,7 @@ test('noop with no tests', t => {
   t.plan(1)
   try {
     const tapeInstance = proxyquire('tape', {})
-    const testInstance = mixtape(tapeInstance)
+    mixtape(tapeInstance)
     t.pass('did not throw')
   } catch (e) {
     t.fail(e.message)
