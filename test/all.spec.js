@@ -4,6 +4,12 @@ const sinon = require('sinon')
 
 const mixtape = require('../')
 
+process.setMaxListeners(Infinity)
+// this is only relevant to the testing environment
+// because we're using "vanilla" tape for the tests
+//
+// mixtape is not used to test itself in order to make debugging easier
+
 test('tests run concurrently', async t => {
   t.plan(1)
   try {
