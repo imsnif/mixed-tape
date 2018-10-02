@@ -8,9 +8,7 @@
   "author": "Aram Drevekenin <grimsniffer@gmail.com>",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "tap-parser": "^7.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "proxyquire": "^2.1.0",
     "sinon": "^6.3.4",
