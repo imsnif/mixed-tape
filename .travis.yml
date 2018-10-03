@@ -1,10 +1,6 @@
 language: node_js
 node_js:
   - "node"
-jobs:
-  include:
-    - stage: browser tests
-      script: npm run test:browser
 
 after_script:
   - npm run coveralls
