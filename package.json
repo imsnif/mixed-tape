@@ -6,7 +6,8 @@
     "test": "standard && tape test/*.spec.js | tap-spec",
     "test:browser": "node ./util/browserify.build.js | tape-run | tap-spec",
     "lint": "standard --fix",
-    "coverage": "nyc --reporter=lcov npm test"
+    "coverage": "nyc --reporter=lcov npm test",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Aram Drevekenin <grimsniffer@gmail.com>",
   "license": "MIT",
@@ -20,6 +21,7 @@
     "@babel/plugin-transform-async-to-generator": "^7.1.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
+    "coveralls": "^3.0.2",
     "nyc": "^13.0.1",
     "proxyquire": "^2.1.0",
     "proxyquire-universal": "^1.0.8",
