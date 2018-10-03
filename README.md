@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/imsnif/mixed-tape.svg?branch=master)](https://travis-ci.org/imsnif/synp) [![Coverage Status](https://coveralls.io/repos/github/imsnif/mixed-tape/badge.svg?branch=master)](https://coveralls.io/github/imsnif/synp?branch=master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/imsnif/mixed-tape.svg?branch=master)](https://travis-ci.org/imsnif/mixed-tape) [![Coverage Status](https://coveralls.io/repos/github/imsnif/mixed-tape/badge.svg?branch=master)](https://coveralls.io/github/imsnif/mixed-tape?branch=master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # mixed-tape
 A drop in replacement for [tape](https://github.com/substack/tape) that runs tests concurrently in node and the browser (using [browserify](https://github.com/browserify/browserify)).
