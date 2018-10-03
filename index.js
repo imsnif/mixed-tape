@@ -1,6 +1,6 @@
 const debounce = require('debounce')
 const { api } = require('./lib/api')
-const { createReport } = require('./lib/create-report')
+const { createReport } = require('./lib/pipeline')
 
 module.exports = tape => {
   process.stdout = process.stdout || require('browser-stdout')()
