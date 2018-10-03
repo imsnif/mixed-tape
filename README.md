@@ -5,7 +5,9 @@ A drop in replacement for [tape](https://github.com/substack/tape) that runs tes
 
 ### install
 `npm install --save-dev mixed-tape tape` /
+
 `yarn add -D mixed-tape tape`
+
 ### usage
 ```javascript
 const tape = require('tape')
@@ -58,13 +60,19 @@ Under the hood, it uses `tape`'s `createHarness` method for every test it runs, 
 It intentionally does not hijack `console.log`s. For this reason, those might appear before the test's assertions. This is done because it was deemed this is a less surprising behaviour to the developer, given the other options.
 
 ### api support
-[x] test()
-[x] test.only()
-[x] test.skip()
-[x] test.onFinish()
-[x] test.onFailure()
-[x] test.createStream()
-[ ] test.createHarness() - `tape` itself does not support recursive `createHarness` calls, so implementing this is not trivial. If this is a thing for you, please open an issue or better yet, a PR.
+- [x] test()
+
+- [x] test.only()
+
+- [x] test.skip()
+
+- [x] test.onFinish()
+
+- [x] test.onFailure()
+
+- [x] test.createStream()
+
+- [ ] test.createHarness() - `tape` itself does not support recursive `createHarness` calls, so implementing this is not trivial. If this is a thing for you, please open an issue or better yet, a PR.
 
 These methods work as expected. For full documentation, please see: [tape](https://github.com/substack/tape).
 
