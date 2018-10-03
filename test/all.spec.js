@@ -4,7 +4,7 @@ const sinon = require('sinon')
 
 const mixtape = require('../')
 
-process.setMaxListeners(Infinity)
+process && process.setMaxListeners && process.setMaxListeners(Infinity)
 // this is only relevant to the testing environment
 // because we're using "vanilla" tape for the tests
 //
@@ -111,75 +111,6 @@ test('tests provide proper TAP output on success', async t => {
       setTimeout(() => {
         second()
         t.equals(2, 2, 'two two two')
-        t.end()
-      }, 500)
-    })
-  } catch (e) {
-    t.fail(e.message)
-    t.end()
-  }
-})
-
-test('tests provide proper TAP output on failure', async t => {
-  t.plan(23)
-  try {
-    const tapeInstance = proxyquire('tape', {})
-    const testInstance = mixtape(tapeInstance)
-    const first = sinon.spy()
-    const second = sinon.spy()
-    const output = testInstance.createStream()
-    const expected = [
-      'TAP version 13\n',
-      '# second test\n',
-      'not ok 1 two two two\n',
-      '  ---\n',
-      '    operator: fail\n',
-      /^ {4}at:/,
-      '    stack: |-\n',
-      '      Error: two two two\n',
-      /^ {10}at/, // TODO: find a better solution
-      /^ {10}at/,
-      /^ {10}at/,
-      /^ {10}at/,
-      /^ {10}at/,
-      /^ {10}at/,
-      /^ {10}at/,
-      /^ {10}at/,
-      '  ...\n',
-      '# first test\n',
-      'ok 2 one one one\n',
-      '\n1..2\n',
-      '# tests 2\n',
-      '# pass 1\n',
-      '# fail 1\n'
-    ]
-    output.on('data', function (data) {
-      this.index = this.index || 0
-      if (expected[this.index] instanceof RegExp) {
-        t.ok(
-          expected[this.index].test(data.toString()),
-          `output line ${this.index} formatted properly`
-        )
-      } else {
-        t.equals(
-          data.toString(),
-          expected[this.index],
-          `output line ${this.index} formatted properly`
-        )
-      }
-      this.index++
-    })
-    testInstance('first test', t => {
-      setTimeout(() => {
-        first()
-        t.equals(1, 1, 'one one one')
-        t.end()
-      }, 1000)
-    })
-    testInstance('second test', t => {
-      setTimeout(() => {
-        second()
-        t.fail('two two two')
         t.end()
       }, 500)
     })
