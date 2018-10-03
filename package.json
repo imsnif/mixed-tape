@@ -11,6 +11,10 @@
   },
   "author": "Aram Drevekenin <grimsniffer@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imsnif/mix-tape.git"
+  },
   "description": "Run tape tests concurrently",
   "keywords": [
     "test",
