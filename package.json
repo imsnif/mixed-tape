@@ -16,6 +16,12 @@
     "url": "git+https://github.com/imsnif/mix-tape.git"
   },
   "description": "Run tape tests concurrently",
+  "files": [
+    "/lib",
+    "/README.md",
+    "/LICENSE.md",
+    "/index.js"
+  ],
   "keywords": [
     "test",
     "tape",
