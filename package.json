@@ -13,6 +13,7 @@
   "license": "MIT",
   "description": "Run tape tests concurrently",
   "keywords": [
+    "test",
     "tape",
     "concurrent",
     "parallel",
