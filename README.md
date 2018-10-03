@@ -5,6 +5,7 @@ A drop in replacement for [tape](https://github.com/substack/tape) that runs tes
 
 ### install
 `npm install --save-dev mix-tape tape` /
+
 `yarn add -D mix-tape tape`
 ### usage
 ```javascript
@@ -59,11 +60,17 @@ It intentionally does not hijack `console.log`s. For this reason, those might ap
 
 ### api support
 [x] test()
+
 [x] test.only()
+
 [x] test.skip()
+
 [x] test.onFinish()
+
 [x] test.onFailure()
+
 [x] test.createStream()
+
 [ ] test.createHarness() - `tape` itself does not support recursive `createHarness` calls, so implementing this is not trivial. If this is a thing for you, please open an issue or better yet, a PR.
 
 These methods work as expected. For full documentation, please see: [tape](https://github.com/substack/tape).
