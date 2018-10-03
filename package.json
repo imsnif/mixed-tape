@@ -1,5 +1,5 @@
 {
-  "name": "mix-tape",
+  "name": "mixed-tape",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imsnif/mix-tape.git"
+    "url": "git+https://github.com/imsnif/mixed-tape.git"
   },
   "description": "Run tape tests concurrently",
   "files": [

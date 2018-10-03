@@ -1,16 +1,16 @@
-[![Build Status](https://travis-ci.org/imsnif/mix-tape.svg?branch=master)](https://travis-ci.org/imsnif/synp) [![Coverage Status](https://coveralls.io/repos/github/imsnif/mix-tape/badge.svg?branch=master)](https://coveralls.io/github/imsnif/synp?branch=master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/imsnif/mixed-tape.svg?branch=master)](https://travis-ci.org/imsnif/synp) [![Coverage Status](https://coveralls.io/repos/github/imsnif/mixed-tape/badge.svg?branch=master)](https://coveralls.io/github/imsnif/synp?branch=master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-# mix-tape
+# mixed-tape
 A drop in replacement for [tape](https://github.com/substack/tape) that runs tests concurrently in node and the browser (using [browserify](https://github.com/browserify/browserify)).
 
 ### install
-`npm install --save-dev mix-tape tape` /
-`yarn add -D mix-tape tape`
+`npm install --save-dev mixed-tape tape` /
+`yarn add -D mixed-tape tape`
 ### usage
 ```javascript
 const tape = require('tape')
-const mixtape = require('mix-tape')
-const test = mixtape(tape)
+const mixedTape = require('mixed-tape')
+const test = mixedTape(tape)
 
 test('first test', t => {
   setTimeout(() => {
@@ -29,12 +29,12 @@ test('second test', t => {
 // tests will run in ~1 second instead of ~2
 ```
 
-Note that if you'd like to split your tests into separate files, `mix-tape` should be created and exported in just one place, eg:
+Note that if you'd like to split your tests into separate files, `mixed-tape` should be created and exported in just one place, eg:
 ```javascript
 // test-runner.js
 const tape = require('tape')
-const mixtape = require('mix-tape')
-module.exports = mixtape(tape)
+const mixedTape = require('mixed-tape')
+module.exports = mixedTape(tape)
 
 // test-file-1.spec.js
 const test = require('./test-runner')
@@ -51,7 +51,7 @@ test('my second test', t => {
 })
 ```
 ### how does it work?
-`mix-tape` runs tests asynchronously on one thread. It saves lots of time for tests that rely on IO (eg. e2e tests). It can definitely run synchronous tests, but one will likely not see a big performance boost there.
+`mixed-tape` runs tests asynchronously on one thread. It saves lots of time for tests that rely on IO (eg. e2e tests). It can definitely run synchronous tests, but one will likely not see a big performance boost there.
 
 Under the hood, it uses `tape`'s `createHarness` method for every test it runs, piping their results (once the test has run) to a stream that reports them in real time, strips out their summaries and prints out a merged summary in the end.
 
