@@ -52,6 +52,28 @@ test('my second test', t => {
   // ...
 })
 ```
+It is also possible to place a limit on the number of concurrent tasks:
+```javascript
+const fspr = require('fs').promises
+const tape = require('tape')
+const mixedTape = require('mixed-tape')
+const concurrentLimit = 3
+const test = mixedTape(tape,concurrentLimit)
+function snooze(t){return new Promise((r)=>{setTimeout(()=>{r()},t)})}
+Array(12).forEach(async(_,i)=>{
+  test('test#'+i, t => {
+      const content=Promise.any([
+        fspr.readFile('./WarAndPeace.pdf'),
+        snooze(1000)]);
+      t.equals(content,"involves Russia",`#${i} speed reading OK`)
+      t.end()
+  })
+})
+// tests will run in ~4 second instead of ~12,
+// but no more than 3 copies of WarAndPeace in memory at once.
+```
+
+
 ### how does it work?
 `mixed-tape` runs tests asynchronously on one thread. It saves lots of time for tests that rely on IO (eg. e2e tests). It can definitely run synchronous tests, but one will likely not see a big performance boost there.
 
@@ -82,6 +104,12 @@ While the prospect of running tests concurrently might be an appealing one (ofte
 Tests will inevitably share some sort of state. Even if there are proper isolation methods in place, at the very least they will share hardware resources.
 
 In a lot of cases this is not an issue, but be wary when using this method. With reduced speed come unknown variables.
+
+### optimal number of concurrent tasks
+
+When tests are pending on IO leaving spare CPU cycles unused, then a higher number of concurrent tests can take advanage of those cycles.
+
+However, more concurrent tests will result in more memory usage, and if swap or total memory are insufficient then performance will drop - even freeze.
 
 ### contributing
 Please do!
