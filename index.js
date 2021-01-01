@@ -1,13 +1,16 @@
 const debounce = require('debounce')
 const { api } = require('./lib/api')
 const { createReport } = require('./lib/pipeline')
+const semaphoreFactory = require('semaphore')
 
-module.exports = tape => {
+module.exports = (tape, concurrentLimit = 0) => {
   process.stdout = process.stdout || require('browser-stdout')()
   const registerTest = debounce(
     () => Promise.all(state.testsEnded).then(() => report.end()), 100
   )
   let state = {
+    semaphore: (concurrentLimit > 0) ? semaphoreFactory(concurrentLimit) : null,
+    concurrentLimit: concurrentLimit, // 0 => infinity, no limit
     only: false,
     pipedToProcess: false,
     testsEnded: [],

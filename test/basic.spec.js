@@ -132,23 +132,28 @@ test('noop with no tests', t => {
   }
 })
 
-test('can run 100 test cases', async t => {
+test('can run 20 waited test cases with concurrent limit==4', async t => {
   t.plan(1)
   try {
     const tapeInstance = proxyquire('tape', {})
-    const testInstance = mixtape(tapeInstance)
-    testInstance.createStream() // silence output
+    const testInstance = mixtape(tapeInstance, 4)
+    // testInstance.createStream() // silence output
     let runs = new Set()
     const testsDone = new Promise(resolve => testInstance.onFinish(resolve))
-    Array(100).fill(1).forEach((el, index) => {
+    Array(20).fill(1).forEach((el, index) => {
       testInstance(`test ${index}`, t => {
-        runs.add(index)
-        t.ok(1)
-        t.end()
+        const fn = () => {
+          runs.add(index)
+          t.ok(1)
+          t.comment(`${index} end`)
+          t.end()
+        }
+        t.comment(`${index} start`)
+        setTimeout(fn, index % 5 ? 10 : 100)
       })
     })
     await testsDone
-    t.equals(runs.size, 100, 'all tests ran')
+    t.equals(runs.size, 20, 'all tests ran')
   } catch (e) {
     t.fail(e.message)
     t.end()
